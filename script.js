@@ -21,7 +21,16 @@ function alertar(event){
         
         fetch(url)
         .then(resposta=>resposta.json())
-        .then(dados=>alert(dados.logradouro))
+        .then(function(dados){
+            logradouro.value = dados.logradouro;
+            bairro.value = dados.bairro;
+            cidade.value = dados.localidade;
+            complemento.value = dados.complemento;
+            estado.value = dados.uf;
+        })
+        
+             
+        .catch(function(e){alert(e.message());});
 
         saida.innerText = "Nome: " + nome.value + 
         "\n Email: " + email.value + 
